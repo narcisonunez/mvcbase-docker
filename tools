@@ -6,7 +6,8 @@ if [ $# -gt 0 ]; then
         docker build -t mvcbase-docker/app:latest -f ./docker/app/Dockerfile ./docker/app \
 		&& docker build -t mvcbase-docker/node:latest -f ./docker/node/Dockerfile ./docker/node
     fi
-
 else
-    docker-compose ps
+	echo -e "\nCommands\n"
+ 	echo -e "build\t\t\tBuild all the images based on docker files"
+	 echo -e "\n"
 fi
