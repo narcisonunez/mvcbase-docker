@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ $# -gt 0 ]; then
+
+    if [ "$1" == "build" ]; then
+        docker build -t mvcbase-docker/app:latest -f ./docker/app/Dockerfile ./docker/app \
+		&& docker build -t mvcbase-docker/node:latest -f ./docker/node/Dockerfile ./docker/node
+    fi
+
+else
+    docker-compose ps
+fi
