@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+    app:
+        build:
+            context: ./docker/app
+            dockerfile: Dockerfile
+        image: mvcbase/app:latest
+        ports:
+            - 8080:80
+        networks:
+            - appnet
+        volumes:
+            - ./src:/var/www/html/src
+        working_dir: /var/www/html/src
+    node:
+        build:
+            context: ./docker/node
+            dockerfile: Dockerfile
+        image: mvcbase/node:latest
+        networks:
+            - appnet
+        volumes:
+            - ./src:/var/www/html/src
+        working_dir: /var/www/html/src
+networks:
+    appnet:
+        driver: bridge
+volumes:
+    mydata:
+        driver: local
