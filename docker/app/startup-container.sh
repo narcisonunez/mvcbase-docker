@@ -11,6 +11,7 @@ chmod -R ugo+rw /.composer
 
 if [ ! -d /var/www/html/src/public ]; then
     git clone https://github.com/narcisonunez/mvc-base.git .
+    git remote remove origin
     cp env.values .env
     mkdir logs
     touch logs/server.error.log
